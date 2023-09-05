@@ -28,6 +28,7 @@ class Aluno{
         for (int i = 0; i<3; i++){
             this.notas[i] = scan.nextFloat();
         }
+        scan.close();
     }
     float media(){
         float soma = 0; 
@@ -48,7 +49,5 @@ class NovaMedia {
         float med = a1.media();
         System.out.printf("%.2f", med);
     
-}
-   
-    
+    }
 }
