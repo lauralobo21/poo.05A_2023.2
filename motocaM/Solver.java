@@ -26,13 +26,22 @@ class Motorcycle {
     private int power;
     private int time;
 
-
+//Construtor -----------------------------
     public Motorcycle(int power) {
-
+        this.power = 1;
+        this.time = 0;
+        this.person = (0, 0);
     }
 
     public boolean insertPerson(Person person) {
-
+        if(this.person < 1) {
+            System.out.println("empty");
+        }
+        else if(this.person > 1)
+            System.out.println("fail: busy motorcycle");
+        } else {
+            this.person = person;
+        }
     }
     public Person remove() {
         if(this.person == null) {
@@ -54,7 +63,7 @@ class Motorcycle {
 
     }
     
-
+//gets ----------------------------------
     public Person getPerson() {
         return person;
     }
@@ -70,7 +79,6 @@ class Motorcycle {
         return "power" + this.power + ", time:" + this.time + 
     }
 
-}
 
 public class Solver {
     public static void main(String[] args) {
