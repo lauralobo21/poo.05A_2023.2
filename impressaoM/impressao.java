@@ -34,6 +34,7 @@ class impressao {
         System.out.println("Matrícula = " + matr);
         System.out.println("Disciplina = " + disc);
         System.out.println("Nota = " + nota);
-        
+    in.close();    
     }
+
 }

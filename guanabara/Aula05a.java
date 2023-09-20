@@ -11,22 +11,22 @@ class ContaBanco {
     //cp 150
 
 //Métodos Personalizados
-
     public void estadoAtual() {
         System.out.println("Conta: " + this.getNumConta());
         System.out.println("Tipo: " + this.getTipo());
         System.out.println("Dono: " + this.getDono());
         System.out.println("Saldo: " + this.getSaldo());
         System.out.println("Status: " + this.getStatus());
+        System.out.println("----------------------------------");
     }
     public void abrirConta(String t) {
         this.setTipo(t);
         this.setStatus(true); //this.status = true;
         if(t == "CC") {
-            this.setSaldo(50) //this.saldo = 50;
+            this.setSaldo(50); //this.saldo = 50;
         }
         else if(t == "CP") {
-            this.setSaldo(150) //this.saldo = 150;
+            this.setSaldo(150); //this.saldo = 150;
         }
     }
 
@@ -66,7 +66,7 @@ class ContaBanco {
     }
     
     public void pagarMensal() {
-        int x;
+        int x = 0;
         if(this.getTipo() == "CC") {
             x = 12;
         } else if(this.getTipo() == "CP") {
@@ -137,7 +137,17 @@ public class Aula05a {
         p1.setNumConta(111);
         p1.setDono("Jubileu");
         p1.abrirConta("CC");
-        p1.estadoAtual();
+        
 
+        ContaBanco p2 = new ContaBanco();
+        p2.setDono("Tarciana");
+        p2.setNumConta(2232);
+        p2.abrirConta("CP");
+        
+        p1.depositar(500);
+        p2.depositar(540);
+        p2.sacar(100);
+        p1.estadoAtual();
+        p2.estadoAtual();
     }
 }

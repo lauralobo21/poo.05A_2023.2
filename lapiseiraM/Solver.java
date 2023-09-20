@@ -1,19 +1,5 @@
-/* 
-O que fez?
-Se fez tudo, passando em todos os testes, ou se fez parcial (qual parte fez).
-Com quem fez?
-Se fez sozinho ou se fez com alguém(quem) e como foi a divisão do trabalho.
-O que aprendeu?
-Se aprendeu não aprendeu o que a tarefa propõe ou tem partes que você não é capaz de refazer.
-Quanto tempo levou?
-Juntando estudo e codificação. */
+package lapiseiraM;
 
-// 1. Fiz a construção inical do programa
-// 2. Fiz junto com o professor na sala.
-// 3. 
-// 4.
-
-package grafiteM;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -67,10 +53,12 @@ class Lead {
 class Pencil {
     private float thickness;
     private Lead tip;
+    private ArrayList<Lead> barrel;
 
     public Pencil(float thickness) {
         this.thickness = thickness;
         this.tip = null;
+        this.barrel = new ArrayList<Lead>();
     }
 
     public float getThickness() {
@@ -91,14 +79,27 @@ class Pencil {
     }
 
     public boolean insert(Lead grafite) {
-        if ( this.hasGrafite() ) {
-            System.out.println("fail: ja existe grafite");
-            return false;
-        } else if ( this.thickness != grafite.getThickness() ) {
-            System.out.println("fail: calibre incompativel");
+        if ( this.thickness != grafite.getThickness() ) {
+            System.out.println("fail: calibre incompatível");
             return false;
         } else {
-            this.tip = grafite;
+            this.barrel.add(grafite);
+            return true;
+        }
+    }
+
+    public boolean pull() {
+        if(this.hasGrafite()) {
+            System.out.println("fail: ja existe grafite no bico");
+            return false;
+        } else if(this.barrel.isEmpty()) {
+            System.out.println("fail: não existe grafite no tambor");
+            return false;
+        } else {
+            //this.tip = this.barrel.get(0);
+            //this.barrel.remove(0);
+
+            this.tip = this.barrel.remove(0);
             return true;
         }
     }
@@ -116,7 +117,7 @@ class Pencil {
 
     public void writePage() {
         if ( !this.hasGrafite() ) {
-            System.out.println("fail: nao existe grafite");
+            System.out.println("fail: nao existe grafite no bico");
             return;
         }
         if ( this.tip.getSize() <= 10 ) {
@@ -134,11 +135,16 @@ class Pencil {
     }
     
     public String toString() {
-        String saida = "calibre: " + thickness + ", grafite: ";
+        String saida = "calibre: " + thickness + ", bico: ";
         if (tip != null)
             saida += "[" + tip + "]";
         else
-            saida += "null";
+            saida += "[]";
+            saida += ", tambor: {";
+            for(Lead elem : this.barrel) {
+                saida += "[" + elem + "]";
+            }
+            saida += "}";
         return saida;
     }
 }
@@ -152,12 +158,14 @@ public class Solver {
             String[] argsL = line.split(" ");
             write('$' + line);
 
-            if      ("end".equals(argsL[0])   ) { break;                                                                    }
+            if      ("end".equals(argsL[0])   ) { break;                                                                       }
             else if ("init".equals(argsL[0])  ) { pencil = new Pencil(number(argsL[1]));                                       }
             else if ("insert".equals(argsL[0])) { pencil.insert(new Lead(number(argsL[1]), argsL[2], (int) number(argsL[3]))); }
+            else if ("pull".equals(argsL[0])) { pencil.pull();                                                                 }
             else if ("remove".equals(argsL[0])) { pencil.remove();                                                             }
             else if ("write".equals(argsL[0]) ) { pencil.writePage();                                                          }
-            else if ("show".equals(argsL[0])  ) { write(pencil.toString());                                                               }
+            else if ("show".equals(argsL[0])  ) { write(pencil.toString());                                                    }
+            else  {write("comando inválido");}                                                          
         }
     }
 
@@ -167,4 +175,8 @@ public class Solver {
     public static void write(String value) { System.out.println(value);    }
     public static float number(String str) { return Float.parseFloat(str); }
 }
+
+
+
+
 
