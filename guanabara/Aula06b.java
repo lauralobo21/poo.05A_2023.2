@@ -55,7 +55,7 @@ class ControleRemoto implements Controlador06b {
         System.out.println("Está tocando? " + this.getTocando());
         System.out.print("Volume: " + this.getVolume());
         for(int i = 0; i<= this.getVolume(); i+=10) {
-            System.out.print("[]");
+            System.out.print("|");
         }
     }
 
@@ -115,6 +115,7 @@ class ControleRemoto implements Controlador06b {
 public class Aula06b {
     public static void main(String[] args) {
         ControleRemoto c = new ControleRemoto();
+        System.out.println("-----MENU-----");
         c.ligar();
         c.abrirMenu();
 

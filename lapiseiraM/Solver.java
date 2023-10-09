@@ -1,5 +1,18 @@
-package lapiseiraM;
+/* O que fez?
+Se fez tudo, passando em todos os testes, ou se fez parcial (qual parte fez).
+Com quem fez?
+Se fez sozinho ou se fez com alguém(quem) e como foi a divisão do trabalho.
+O que aprendeu?
+Se aprendeu não aprendeu o que a tarefa propõe ou tem partes que você não é capaz de refazer.
+Quanto tempo levou?
+Juntando estudo e codificação. */
 
+
+// 1.Fiz a construção do código
+// 2.Fiz junto com o professor em sala
+// 3.Juntar as duas classes
+// 4.Levei 2h
+package lapiseiraM;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -175,8 +188,3 @@ public class Solver {
     public static void write(String value) { System.out.println(value);    }
     public static float number(String str) { return Float.parseFloat(str); }
 }
-
-
-
-
-
