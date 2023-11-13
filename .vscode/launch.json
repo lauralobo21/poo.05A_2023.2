@@ -2,6 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "java",
+      "name": "UltraEmojiCombate07",
+      "request": "launch",
+      "mainClass": "guanabara.UltraEmojiCombate07",
+      "projectName": "poo.05A_2023.2_5f11dc56"
+    },
+    {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
       "request": "launch",
